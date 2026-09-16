@@ -1,0 +1,17 @@
+[run]
+source = src
+omit =
+    */tests/*
+    */migrations/*
+    */admin.py
+    */apps.py
+    */__init__.py
+    */urls.py
+
+[report]
+show_missing = True
+skip_empty = True
+fail_under = 80
+
+[html]
+directory = htmlcov

@@ -1,0 +1,203 @@
+/* Loại bỏ lề mặc định của trình duyệt để app tràn viền */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Ngăn chặn cuộn ngang */
+}
+
+/* Tinh chỉnh Container fluid để tràn 100% chiều ngang */
+.container-fluid.p-0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Đảm bảo nền của trang đăng ký/đăng nhập bao phủ toàn bộ chiều cao */
+.custom-row-primary {
+  min-height: calc(100vh - 160px); /* Trừ đi chiều cao Header và Footer */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f8f9fa; /* Màu nền nhẹ cho trang */
+}
+
+/* Làm gọn các ô FloatingLabel để giảm chiều cao */
+.form-floating > .form-control {
+  height: calc(3rem + 2px); /* Giảm độ cao một chút so với mặc định */
+  line-height: 1.25;
+}
+
+.form-floating > label {
+  padding: 0.75rem 0.75rem;
+}
+
+/* Hiệu ứng mờ dần cho thông báo (nếu có) */
+.fade-out-message {
+  padding: 10px;
+  background-color: #d4edda;
+  color: #155724;
+  text-align: center;
+  border-bottom: 1px solid #c3e6cb;
+}
+
+.payment-result-card {
+  border-radius: 8px;
+}
+
+.payment-result-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.payment-result-icon.success {
+  background-color: #198754;
+}
+
+.payment-result-icon.failed {
+  background-color: #dc3545;
+}
+
+.payment-checkout-card {
+  border-radius: 8px;
+}
+
+.payment-checkout-list .list-group-item {
+  border-color: #edf0f2;
+}
+
+.payment-checkout-total {
+  color: #198754;
+  font-size: 1.35rem;
+  font-weight: 800;
+}
+
+.admin-report-card {
+  border-radius: 8px;
+}
+
+.admin-report-filter {
+  min-width: min(100%, 720px);
+}
+
+.revenue-chart {
+  min-height: 260px;
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 16px 4px 4px;
+}
+
+.revenue-chart-item {
+  min-width: 72px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.revenue-chart-value {
+  min-height: 34px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #198754;
+  text-align: center;
+}
+
+.revenue-chart-bar-wrap {
+  height: 180px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.revenue-chart-bar {
+  width: min(42px, 80%);
+  min-height: 12px;
+  border-radius: 6px 6px 0 0;
+  background: #198754;
+}
+
+.revenue-chart-label {
+  min-height: 32px;
+  font-size: 0.78rem;
+  color: #6c757d;
+  text-align: center;
+}
+
+.owner-profile-page .card {
+  border-radius: 8px;
+}
+
+.owner-profile-card {
+  position: sticky;
+  top: 96px;
+}
+
+.owner-profile-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: #198754;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.owner-profile-contact {
+  display: grid;
+  gap: 14px;
+}
+
+.owner-profile-contact div {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  align-items: start;
+  gap: 10px;
+  color: #495057;
+}
+
+.owner-profile-stat {
+  min-height: 132px;
+}
+
+.owner-profile-stat svg {
+  font-size: 1.4rem;
+}
+
+.owner-profile-stat-value {
+  min-height: 38px;
+  color: #212529;
+  font-size: 1.75rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.owner-profile-summary {
+  min-height: 104px;
+  padding: 16px;
+  border: 1px solid #edf0f2;
+  border-radius: 8px;
+  background: #f8f9fa;
+}
+
+@media (max-width: 991.98px) {
+  .owner-profile-card {
+    position: static;
+  }
+}

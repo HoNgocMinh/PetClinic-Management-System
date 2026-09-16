@@ -1,0 +1,52 @@
+/* Tệp CSS cho Home.jsx - Theme Nâu Vàng thân thiện */
+
+/* Class màu nền tối (Nâu vàng nhạt) cho Hero Section và Header */
+.bg-dog-tan {
+    background-color: #e9c46a !important; /* Màu nâu vàng nhạt ấm áp */
+}
+
+/* Class màu nền sáng (Trắng sữa/Kem) cho phần Dịch vụ */
+.bg-dog-cream {
+    background-color: #fefae0 !important; /* Màu trắng sữa */
+}
+
+/* Tùy chỉnh khối chữ Hero lùi vào */
+.hero-text-block {
+    padding-left: 2rem;
+}
+
+/* Tùy chỉnh màu chữ trên nền nâu vàng */
+.hero-text-block h1 {
+    color: #593c2b !important; /* Màu nâu đậm cho tiêu đề */
+}
+
+.hero-text-block .lead {
+    color: #6f4e37 !important; /* Màu nâu nhẹ hơn cho mô tả */
+}
+
+/* Nút Đặt lịch ngay bo góc và màu nâu đậm */
+.hero-btn-custom {
+    background-color: #593c2b !important; /* Màu nâu đậm */
+    border: none !important;
+    color: #fefae0 !important; /* Chữ màu trắng sữa */
+}
+
+.hero-btn-custom:hover {
+    background-color: #6f4e37 !important; /* Hover nâu nhẹ */
+    color: #fff !important;
+}
+
+/* Tùy chỉnh màu icon/văn bản dịch vụ trên nền trắng sữa */
+.service-icon.text-active {
+    color: #e76f51 !important; /* Màu nâu cam đậm cho icon */
+}
+
+.card.bg-dog-cream .card-title,
+.card.bg-dog-cream .card-text {
+    color: #593c2b !important; /* Màu nâu đậm cho chữ dịch vụ */
+}
+
+/* Tùy chỉnh màu tiêu đề phần dịch vụ */
+.section-title.text-dog-brown {
+    color: #593c2b !important;
+}
