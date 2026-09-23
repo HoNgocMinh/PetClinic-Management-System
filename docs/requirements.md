@@ -738,7 +738,7 @@ E1 - Tồn kho không đủ
 
 ### Post-conditions
 
--   Nếu xác nhận thanh toán mock online thành công, trạng thái chuyển sang `PAID`
+-   Nếu thanh toán VNPAY thành công và callback hợp lệ, trạng thái payment chuyển sang `PAID`, đồng thời appointment chuyển sang `COMPLETED`
 
 -   Lịch hẹn chuyển sang `COMPLETED`
 
@@ -768,9 +768,9 @@ E1 - Tồn kho không đủ
 
 -   Công thức hiện tại: `service.price + tổng(quantity * medicine.price)` trong đơn thuốc nếu có.
 
--   Payment method hiện hỗ trợ `MOCK_ONLINE` và `CASH` trong model.
+-   Payment method hiện hỗ trợ `VNPAY` và `CASH` trong model.
 
--   Xác nhận thanh toán hiện áp dụng cho `MOCK_ONLINE`.
+-   Thanh toán online được thực hiện thông qua VNPAY Sandbox. Backend tạo payment URL, ký request bằng `VNPAY_HASH_SECRET` và xử lý kết quả thông qua VNPAY IPN/Return callback.
 
 ### Main Flow
 
@@ -778,7 +778,7 @@ E1 - Tồn kho không đủ
 
 2.  Frontend lấy `payment.id` từ response appointment.
 
-3.  Chủ thú cưng xác nhận thanh toán mock online.
+3.  Chủ thú cưng chọn thanh toán bằng VNPAY và được chuyển hướng đến VNPAY Sandbox để thực hiện thanh toán.
 
 4.  Hệ thống kiểm tra payment thuộc user hiện tại và đang `PENDING`.
 
@@ -1124,10 +1124,23 @@ Người dùng:
 
 -   Lấy `payment.id` từ response appointment.
 
-### Bước 2 - Xác nhận thanh toán mock online
+### Bước 2 - Thanh toán qua VNPAY Sandbox
 
 ```http
-POST /api/payments/{payment_id}/confirm/
+POST /api/payments/{payment_id}/vnpay/create-url/
+        ↓
+Backend tạo và ký VNPAY URL
+        ↓
+Frontend redirect sang VNPAY Sandbox
+        ↓
+VNPAY xử lý giao dịch
+        ↓
+IPN / Return callback
+        ↓
+Backend verify signature + amount
+        ↓
+Payment → PAID
+Appointment → COMPLETED
 ```
 
 ### Bước 3 - Kết quả

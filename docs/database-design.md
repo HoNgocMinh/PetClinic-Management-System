@@ -443,7 +443,7 @@ Mô tả: lưu thanh toán của pet-owner cho lịch hẹn đã khám xong và 
 | `owner_id` | FK -> `users.id` | Required, PROTECT | Chủ thanh toán |
 | `clinic_id` | FK -> `clinics.id` | Required, PROTECT | Phòng khám nhận thanh toán |
 | `amount` | Decimal(12,2) | Required | Tổng tiền thanh toán |
-| `method` | CharField(20) | Choices, Default `MOCK_ONLINE` | Phương thức thanh toán |
+| `method` | CharField(20) | Choices, Default `VNPAY` | Phương thức thanh toán |
 | `status` | CharField(20) | Choices, Default `PENDING` | Trạng thái thanh toán |
 | `paid_at` | DateTime | Nullable | Thời điểm thanh toán thành công |
 | `transaction_code` | CharField(100) | Unique, Nullable | Mã giao dịch |
@@ -455,8 +455,8 @@ Giá trị `method`:
 
 | Giá trị | Mô tả |
 |---|---|
-| `CASH` | Tiền mặt |
-| `MOCK_ONLINE` | Thanh toán online giả lập |
+| `CASH` | Thanh toán tiền mặt |
+| `VNPAY` | Thanh toán trực tuyến qua VNPAY Sandbox |
 
 Giá trị `status`:
 
@@ -489,7 +489,7 @@ Quy tắc nghiệp vụ:
 - Endpoint tạo payment thủ công chỉ áp dụng cho lịch hẹn `WAITING_PAYMENT`.
 - Backend tự tính `amount`, frontend không gửi amount.
 - Công thức hiện tại: `service.price + tổng(quantity * medicine.price)` trong đơn thuốc nếu có.
-- `MOCK_ONLINE` có thể được xác nhận để chuyển `PENDING` -> `PAID`.
+- `VNPAY` được sử dụng để thực hiện thanh toán online. Khi callback từ VNPAY hợp lệ và giao dịch thành công, payment chuyển từ `PENDING` → `PAID`.
 - Khi payment `PAID`, hệ thống ghi `paid_at`, sinh `transaction_code` và chuyển appointment sang `COMPLETED`.
 
 ---
